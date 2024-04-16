@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+ 
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.navbar-brand {
+    color: #fff;
+}
+
+.navbar-nav .nav-link {
+    color: #007bff;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff;
+}
+
+.shortened-url {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px; /* Add this line to set the font size for the shortened URL */
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">URL Shortener</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <h1 class="display-4 text-center">URL Shortener</h1>
+        <p class="lead text-center">Enter your long URL below to get a shortened link.</p>
+        <form action="/shorten" method="post">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Enter your long URL" name="original_url">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Shorten</button>
+                </div>
+            </div>
+        </form>
+        <div class="shortened-url">
+            {% if short_url %}
+                <p class="lead text-center">Shortened URL: <a href="{{ short_url }}" target="_blank" style="color: #007bff;">{{ short_url }}</a></p>
+            {% endif %}
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-center">&copy; 2024 @srinithin All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
